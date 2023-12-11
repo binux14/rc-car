@@ -4,10 +4,9 @@ from wiimote import *
 from oled import *
 from sensor_distance import *
 from lights import *
-import threading
-import sys
+import neopixel
 
-SW_VERSION = "v0.19"
+SW_VERSION = "v0.20"
 
 if __name__ == "__main__":
 	try:
@@ -17,7 +16,8 @@ if __name__ == "__main__":
 
 			#init_dist_sensors()
 
-			init_lights()
+			ligths = Lights(neopixel.NeoPixel(board.D18, NUM_LEDS, auto_write=True))
+			ligths.init()
 
 			init_oled()
 			time.sleep(0.1)

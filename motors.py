@@ -6,7 +6,7 @@ from wiimote import *
 import threading
 from sensor_distance import get_distance_state
 
-SPEED_PERCENTAGE = 50
+SPEED_PERCENTAGE = 75
 COMP_FACTOR = 0.8
 
 def init_motors():
