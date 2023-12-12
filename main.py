@@ -5,14 +5,18 @@ from oled import *
 from sensor_distance import *
 from lights import *
 import neopixel
+import os
 
-SW_VERSION = "v0.21"
+SW_VERSION = "v0.22"
 
 if __name__ == "__main__":
 	try:
 		while(True):
 			print("Starting RC CAR ", end="")
 			print(SW_VERSION)
+
+			#Start streaming
+			os.system("sudo python3 /home/rccar/rc-car/camera.py &")
 
 			#init_dist_sensors()
 

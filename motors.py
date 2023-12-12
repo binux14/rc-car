@@ -127,7 +127,7 @@ def motors_thread():
                         print("STRAIGHT")
                         motors_run(SPEED_PERCENTAGE, 1, False, 0)
                 else:
-                    print("OFF")
+                    #print("OFF")
                     motors_run(0, 0, False, 0)
         except AttributeError as e:
             motors_run(0,0,False,0)

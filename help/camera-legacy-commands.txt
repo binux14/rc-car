@@ -1,0 +1,5 @@
+For legacy:
+sudo raspi-config nonint do_legacy 0
+
+For normal:
+sudo raspi-config nonint do_camera 0
