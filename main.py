@@ -6,7 +6,7 @@ from sensor_distance import *
 from lights import *
 import neopixel
 
-SW_VERSION = "v0.20"
+SW_VERSION = "v0.21"
 
 if __name__ == "__main__":
 	try:

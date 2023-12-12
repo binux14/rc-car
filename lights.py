@@ -109,12 +109,6 @@ class Lights:
                 self._new_button_state = get_button_state()
                 if(old_state != self._new_button_state):
                     old_state = self._new_button_state
-                    print("HEAD: ", end="")
-                    print(self._headlights_on)
-                    print("HIGH B: ", end="")
-                    print(self._highbeams_on)
-                    print("HIGH B PERM: ", end="")
-                    print(self._permanent_highbeams)
                     if(self._new_button_state & cwiid.BTN_B):
                         self.set_high_beams(True)
                         threading.Timer(0, self.long_press_highbeams, args=()).start()

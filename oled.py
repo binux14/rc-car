@@ -1,10 +1,12 @@
-import Adafruit_SSD1306
+import adafruit_ssd1306
 from PIL import Image
 from PIL import ImageFont
 from PIL import ImageDraw
 import threading
 import time
 import sys
+import busio
+import board
 
 IMAGE_LOGO_PATH = '/home/rccar/rc-car/images/land_rover.bmp'
 IMAGE_WELCOME_PATH = '/home/rccar/rc-car/images/rccar.bmp'
@@ -24,15 +26,17 @@ def init_oled():
 	# Raspberry Pi pin configuration:
 	RST = 24
 
+	i2c = busio.I2C(board.SCL, board.SDA)
+
 	# 128x64 display with hardware I2C:
-	disp = Adafruit_SSD1306.SSD1306_128_64(rst=RST)
+	disp = adafruit_ssd1306.SSD1306_I2C(128, 64, i2c)
 
 	# Initialize library.
-	disp.begin()
+	#disp.begin()
 
 	# Clear display.
-	disp.clear()
-	disp.display()
+	disp.fill(0)
+	disp.show()
 
 	# Create blank image for drawing.
 	# Make sure to create image with mode '1' for 1-bit color.
@@ -60,7 +64,7 @@ def init_oled():
 
 	# Display image.
 	disp.image(image)
-	disp.display()
+	disp.show()
 
 def clear_display():
 	draw.rectangle((0,0,128,64), fill=0)
@@ -68,7 +72,7 @@ def clear_display():
 #Used internally only
 def display_show(im):
     disp.image(im)
-    disp.display()
+    disp.show()
 
 def draw_multiline(str, size):
 	if(size == 0):
@@ -81,19 +85,19 @@ def draw_multiline(str, size):
 
 def display_show_ok():
 	disp.image(image_ok)
-	disp.display()
+	disp.show()
 
 def show_welcome_screen():
 	disp.image(image_welcome)
-	disp.display()
+	disp.show()
 
 def display_show_logo():
 	disp.image(image_logo)
-	disp.display()
+	disp.show()
 
 def display_show_nope():
 	disp.image(image_nope)
-	disp.display()
+	disp.show()
 
 def start_wiimote_screen():
 	global exitWiimoteScreen
